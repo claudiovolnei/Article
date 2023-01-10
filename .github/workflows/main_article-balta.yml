@@ -28,7 +28,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENCIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Install EF Tools
         run: dotnet tool install --global dotnet-ef
