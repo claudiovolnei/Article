@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Article.Services;
 
 namespace Article.Areas.Identity.Pages.Account
 {
@@ -116,6 +117,8 @@ namespace Article.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    await new EmailSender().SendEmailAsync(Input.Email, "Login efetuado com sucesso!", "Foi realizado um login no sistem!");
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
